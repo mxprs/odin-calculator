@@ -1,0 +1,34 @@
+#container {
+    display: grid;
+    grid-template: 1fr 5fr / 100%;
+    border-style: solid;
+    border-color: black;
+    width: 800px;
+    height: 800px;
+
+}
+
+.frame-screen {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    border-style: solid;
+    border-color: red;
+}
+
+.frame-keys {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    border-style: solid;
+    border-color: yellow;
+}
+
+.grid-keys {
+    display: grid;
+    border-style: solid;
+    border-color: peru;
+}
+
+.grid-keys p {
+    align-self: center;
+    justify-self: center;
+}
