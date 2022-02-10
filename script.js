@@ -37,7 +37,10 @@ const container = document.querySelector('#container');
 // Calculator screen
 const frameScreen = document.querySelector('.frame-screen');
 const displayCalc = document.createElement('div');
+const paraCalc = document.createElement('p');
 displayCalc.classList = 'grid-screen';
+paraCalc.textContent = '1,004,433';
+displayCalc.appendChild(paraCalc);
 frameScreen.appendChild(displayCalc);
 
 // Calculator keys
@@ -52,3 +55,13 @@ for (let index = 0; index < keysDimensionSize * keysDimensionSize; index++) {
     newButton.appendChild(newPara);
     frameKeys.appendChild(newButton);
 }
+
+// Mouse-over - Keys
+function test(obj) {
+    console.log(obj);
+}
+
+const keys = document.querySelectorAll('.grid-keys');
+keys.forEach(element => element.addEventListener("click", (e) => {
+    console.log(e.target.innerText);
+}));

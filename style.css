@@ -5,27 +5,50 @@
     border-color: black;
     width: 800px;
     height: 800px;
-
 }
 
 .frame-screen {
     display: grid;
     grid-template: 1fr / 1fr;
-    border-style: solid;
-    border-color: red;
 }
 
 .frame-keys {
     display: grid;
     grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+}
+
+
+.grid-screen {
+    display: grid;
     border-style: solid;
-    border-color: yellow;
+    border-color: grey;
+    background-color: grey;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+.grid-screen p {
+    align-self: center;
+    justify-self: end;
 }
 
 .grid-keys {
     display: grid;
     border-style: solid;
-    border-color: peru;
+    border-color: black;
+    background-color: black;
+    color: white;
+    margin: 10px;
+}
+
+.grid-keys:hover {
+    display: grid;
+    border-style: solid;
+    border-color: yellow;
+    background-color: yellow;
+    color: black;
+    margin: 10px;
 }
 
 .grid-keys p {
