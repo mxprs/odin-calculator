@@ -38,10 +38,12 @@ const container = document.querySelector('#container');
 const frameScreen = document.querySelector('.frame-screen');
 const displayCalc = document.createElement('div');
 const paraCalc = document.createElement('p');
+let currentScreenText = '';
 displayCalc.classList = 'grid-screen';
-paraCalc.textContent = '1,004,433';
+paraCalc.textContent = currentScreenText;
 displayCalc.appendChild(paraCalc);
 frameScreen.appendChild(displayCalc);
+
 
 // Calculator keys
 let keysDimensionSize = 4;
@@ -56,12 +58,15 @@ for (let index = 0; index < keysDimensionSize * keysDimensionSize; index++) {
     frameKeys.appendChild(newButton);
 }
 
-// Mouse-over - Keys
-function test(obj) {
-    console.log(obj);
-}
-
+// OnClick - Keys - Display on screen when keys clicked
 const keys = document.querySelectorAll('.grid-keys');
+let newScreenContent = currentScreenText;
 keys.forEach(element => element.addEventListener("click", (e) => {
     console.log(e.target.innerText);
+    newScreenContent = `${newScreenContent} ${e.target.innerText} `;
+    paraCalc.textContent = newScreenContent;
+    displayCalc.appendChild(paraCalc);
 }));
+
+
+// onClick event - Keys
