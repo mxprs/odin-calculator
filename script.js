@@ -17,19 +17,6 @@ function divide (nbr1, nbr2) {
     return nbr1 / nbr2;
 }
 
-function operate(operator, nbr1, nbr2) {
-    switch (operator) {
-        case "+":
-            add(nbr1, nbr2);
-        case "-":
-            substract(nbr1, nbr2);
-        case "x":
-            multiply(nbr1, nbr2);
-        case "÷":
-            divide(nbr1, nbr2);
-    }
-}
-
 function inRange(x, min, max) {
     return ((x-min)*(x-max) <= 0);
 }
@@ -68,29 +55,37 @@ let newScreenContent = currentScreenText;
 let value_a = 0;
 let value_b = 0;
 let operator = "";
+let result = 0;
 keys.forEach(element => element.addEventListener("click", (e) => {
     
     if (e.target.innerText == "C") {
-        newScreenContent = "";
+        newScreenContent = "Result cleared.";
         paraCalc.textContent = newScreenContent;
+        value_a = 0;
+        value_b = 0;
+        
     } else if (e.target.innerText == "=") {
-        newScreenContent = "Result shown.";
+        newScreenContent = "Result.";
         paraCalc.textContent = newScreenContent;
-    } else if (inRange(e.target.innerText, 0, 9)) {
-        if (value_b == 0) {
-            value_b = Number(e.target.innerText);
-        } else {
-            value_a = value_b;
-            value_b = Number(e.target.innerText);
-        }
+        //TODO: --------------- >> logic
+
     } else if (e.target.innerText == "+" || e.target.innerText == "-" || e.target.innerText == "÷" || e.target.innerText == "x") {
         operator = e.target.innerText;
-        console.log(operator);
+
+    } else if (inRange(e.target.innerText, 0, 9)) {
+        
+
+        if (value_a == 0 && value_b == 0) {
+            value_a = e.target.innerText;
+        } else if (value_a != 0 && value_b == 0) {
+            value_b = e.target.innerText;
+        } else if (value_a != 0 && value_b != 0) {
+            value_a = value_b;
+            value_b = e.target.innerText;
+        }
     }
 
-    
+    console.log(operator, value_a, value_b);
+     
     
 }));
-
-
-// onClick event - Keys
