@@ -62,10 +62,21 @@ for (let index = 0; index < keysDimensionSize * keysDimensionSize; index++) {
 const keys = document.querySelectorAll('.grid-keys');
 let newScreenContent = currentScreenText;
 keys.forEach(element => element.addEventListener("click", (e) => {
-    console.log(e.target.innerText);
-    newScreenContent = `${newScreenContent} ${e.target.innerText} `;
-    paraCalc.textContent = newScreenContent;
-    displayCalc.appendChild(paraCalc);
+    
+    if (e.target.innerText == "C") {
+        newScreenContent = "";
+        paraCalc.textContent = newScreenContent;
+        //displayCalc.appendChild(paraCalc);
+    } else if (e.target.innerText == "=") {
+        newScreenContent = "Result shown.";
+        paraCalc.textContent = newScreenContent;
+        //displayCalc.appendChild(paraCalc);
+    } else if (e.target.innerText != "=") {
+        console.log(e.target.innerText);
+        newScreenContent = `${newScreenContent} ${e.target.innerText} `;
+        paraCalc.textContent = newScreenContent;
+    }
+    
 }));
 
 
