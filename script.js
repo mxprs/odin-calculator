@@ -54,38 +54,48 @@ const keys = document.querySelectorAll('.grid-keys');
 let newScreenContent = currentScreenText;
 let value_a = 0;
 let value_b = 0;
-let operator = "";
+let operator = "#";
 let result = 0;
 keys.forEach(element => element.addEventListener("click", (e) => {
     
     if (e.target.innerText == "C") {
-        newScreenContent = "Result cleared.";
+        newScreenContent = "";
         paraCalc.textContent = newScreenContent;
         value_a = 0;
         value_b = 0;
-        
+        operator = "#";
+        result = 0;
+
     } else if (e.target.innerText == "=") {
-        newScreenContent = "Result.";
+        if (operator == "+") {
+            result = add(value_a, value_b);
+        } else if (operator == "-") {
+            result = substract(value_a, value_b);
+        } else if (operator == "÷") {
+            result = divide(value_a, value_b);
+        } else if (operator == "x") {
+            result = multiply(value_a, value_b);
+        }
+        
+        newScreenContent = result;
         paraCalc.textContent = newScreenContent;
-        //TODO: --------------- >> logic
 
     } else if (e.target.innerText == "+" || e.target.innerText == "-" || e.target.innerText == "÷" || e.target.innerText == "x") {
         operator = e.target.innerText;
 
     } else if (inRange(e.target.innerText, 0, 9)) {
-        
-
         if (value_a == 0 && value_b == 0) {
-            value_a = e.target.innerText;
+            value_a = Number(e.target.innerText);
         } else if (value_a != 0 && value_b == 0) {
-            value_b = e.target.innerText;
+            value_b = Number(e.target.innerText);
         } else if (value_a != 0 && value_b != 0) {
             value_a = value_b;
-            value_b = e.target.innerText;
+            value_b = Number(e.target.innerText);
         }
     }
 
-    console.log(operator, value_a, value_b);
+    console.log(operator, value_a, value_b, result);
+    
      
     
 }));
